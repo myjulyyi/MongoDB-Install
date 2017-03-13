@@ -39,3 +39,17 @@ To install the latest stable version of MongoDB, issue the following command:
 <pre><code>
 sudo yum install -y mongodb-org
 </code></pre>
+
+# Run MongoDB Community Edition
+
+The MongoDB instance stores its data files in /var/lib/mongo and its log files in /var/log/mongodb by default, and runs using the mongod user account. You can specify alternate log and data file directories in /etc/mongod.conf. See systemLog.path and storage.dbPath for additional information.
+
+If you change the user that runs the MongoDB process, you must modify the access control rights to the /var/lib/mongo and /var/log/mongodb directories to give this user access to these directories.
+
+## Start MongoDB.
+
+You can start the mongod process by issuing the following command:
+
+<pre><code>
+sudo service mongod start
+</code></pre>
