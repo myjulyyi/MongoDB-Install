@@ -53,3 +53,35 @@ You can start the mongod process by issuing the following command:
 <pre><code>
 sudo service mongod start
 </code></pre>
+
+
+## Verify that MongoDB has started successfully
+
+You can verify that the mongod process has started successfully by checking the contents of the log file at /var/log/mongodb/mongod.log for a line reading
+
+<code><pre>
+[initandlisten] waiting for connections on port <port>
+</pre></code>
+
+where <port> is the port configured in /etc/mongod.conf, 27017 by default.
+
+You can optionally ensure that MongoDB will start following a system reboot by issuing the following command:
+<code><pre>
+sudo chkconfig mongod on
+</pre></code>
+
+## Stop MongoDB.
+
+As needed, you can stop the mongod process by issuing the following command:
+<code><pre>
+sudo service mongod stop
+</pre></code>
+
+## Restart MongoDB.
+
+You can restart the mongod process by issuing the following command:
+<code><pre>
+sudo service mongod restart
+</pre></code>
+
+You can follow the state of the process for errors or important messages by watching the output in the /var/log/mongodb/mongod.log file.
