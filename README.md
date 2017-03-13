@@ -54,3 +54,40 @@ sudo service mongod restart
 ```
 
 You can follow the state of the process for errors or important messages by watching the output in the /var/log/mongodb/mongod.log file.
+
+## Administration
+
+### create user
+```
+db.createUser(
+  {
+    user: "admin",
+    pwd: "admin password",
+    roles: [
+       { role: "userAdminAnyDatabase", db: "admin" } ,
+       { role: "root", db: "admin" } 
+    ]
+  }
+)
+```
+### security.authorization setting and restart
+```
+security:
+  authorization: enabled
+```
+Start a mongo shell with the -u <username>, -p <password>, and the --authenticationDatabase <database> command line options:
+```
+mongo --port 27017 -u "admin" -p "admin password" --authenticationDatabase "admin"
+```
+### Create additional users as needed for your deployment.
+```
+use test
+db.createUser(
+  {
+    user: "myTester",
+    pwd: "xyz123",
+    roles: [ { role: "readWrite", db: "test" },
+             { role: "read", db: "reporting" } ]
+  }
+)
+```
